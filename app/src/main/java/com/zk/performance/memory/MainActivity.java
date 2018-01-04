@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.zk.performance.memory.leak.MemoryLeakOneActivity;
 import com.zk.performance.memory.shake.MemoryShakeOneActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.hello).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,MemoryShakeOneActivity.class));
+                startActivity(new Intent(MainActivity.this,MemoryLeakOneActivity.class));
             }
         });
+
 
 
     }
