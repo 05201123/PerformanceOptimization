@@ -1,9 +1,12 @@
 package com.zk.performance.memory.leak;
 
+import android.util.Log;
 import android.view.View;
 
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  *
@@ -14,9 +17,12 @@ public class UploadManager {
 
 
     private A a;
-    private Map<View,IViewUploadListener> viewIViewListenerMap=new HashMap<>();
+//    private Map<View,IViewUploadListener> viewIViewListenerMap=new HashMap<>();
+    private Map<View,IViewUploadListener> viewIViewListenerMap=new WeakHashMap<>();
 
     private static final UploadManager ourInstance = new UploadManager();
+
+    private WeakReference<View> wf;
 
     public static UploadManager getInstance() {
         return ourInstance;
@@ -31,8 +37,6 @@ public class UploadManager {
         a.c=c;
         b.d=d;
         c.d=d;
-
-
 
     }
 
@@ -59,14 +63,14 @@ public class UploadManager {
             for (Map.Entry<View,IViewUploadListener> entry:viewIViewListenerMap.entrySet()) {
                 entry.getValue().viewUploadSuccess();
             }
-
         }
-
     }
     /**
      * 通知上传完成
      */
     public synchronized void notifyUploadFinished(View view) {
+
+
         if (!viewIViewListenerMap.isEmpty()) {
             IViewUploadListener listener=viewIViewListenerMap.get(view);
             if (listener!=null){
@@ -75,4 +79,15 @@ public class UploadManager {
         }
 
     }
+    public void printMap(){
+        if(!viewIViewListenerMap.isEmpty()){
+            for(Map.Entry<View,IViewUploadListener> entry:viewIViewListenerMap.entrySet()){
+                View key=entry.getKey();
+                IViewUploadListener value=entry.getValue();
+                Log.e("aaa",key.toString()+":"+value.toString());
+            }
+        }
+
+    }
+
 }
