@@ -23,7 +23,7 @@ public class MemoryLeakOneActivity extends AppCompatActivity {
         setContentView(R.layout.activity_memory_leak_one);
         UploadManager.getInstance().addListener(findViewById(R.id.imageView3), new ViewUploadListenerImpl());
 
-//        UploadManager.getInstance().addListener(findViewById(R.id.imageView3), new IViewUploadListener() {
+//        MemoryReferenceManager.getInstance().addListener(findViewById(R.id.imageView3), new IViewUploadListener() {
 //                    @Override
 //                    public void viewUploadSuccess() {
 //                        findViewById(R.id.imageView2).setVisibility(View.GONE);

@@ -11,9 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.zk.performance.memory.leak.MemoryLeakOneActivity;
-import com.zk.performance.memory.leak.UploadManager;
-import com.zk.performance.memory.shake.MemoryShakeOneActivity;
+import com.zk.performance.memory.gc.MemoryGcMainActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,20 +35,20 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.hello).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                MemoryReferenceManager.getInstance().printMap();
+                startActivity(new Intent(MainActivity.this,MemoryGcMainActivity.class));
+
+
+            }
+        });
+//        findViewById(R.id.hello2).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //                UploadManager.getInstance().printMap();
-                startActivity(new Intent(MainActivity.this,MemoryLeakOneActivity.class));
-
-
-            }
-        });
-        findViewById(R.id.hello2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UploadManager.getInstance().printMap();
-
-
-            }
-        });
+//
+//
+//            }
+//        });
 
         LinearLayout ll;
 

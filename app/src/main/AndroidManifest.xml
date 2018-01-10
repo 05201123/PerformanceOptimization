@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".leak.MemoryLeakOneActivity" />
         <activity android:name=".shake.MemoryShakeOneActivity" />
+        <activity android:name=".gc.MemoryGcMainActivity"/>
+        <activity android:name=".gc.MemoryReferenceOneActivity"/>
     </application>
 
 </manifest>
